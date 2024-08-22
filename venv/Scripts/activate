@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\nasru\Desktop\AIML Projects\ChingYi_PYCARET\PYCARET_Web_App\Ching_Yi_Pycaret_Web_App\venv"
+VIRTUAL_ENV="C:\Users\khuac\OneDrive\Desktop\223905L_MLOPs_Assignment\Ching_Yi_Pycaret_Web_App\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

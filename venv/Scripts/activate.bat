@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\nasru\Desktop\AIML Projects\ChingYi_PYCARET\PYCARET_Web_App\Ching_Yi_Pycaret_Web_App\venv
+set VIRTUAL_ENV=C:\Users\khuac\OneDrive\Desktop\223905L_MLOPs_Assignment\Ching_Yi_Pycaret_Web_App\venv
 
 if not defined PROMPT set PROMPT=$P$G
 
