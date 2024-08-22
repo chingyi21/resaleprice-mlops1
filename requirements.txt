@@ -7,7 +7,6 @@ asgiref==3.7.2
 asttokens==2.2.1
 astunparse==1.6.3
 backcall==0.2.0
-backports.zoneinfo==0.2.1
 bcrypt==4.0.1
 binaryornot==0.4.4
 blinker==1.5
