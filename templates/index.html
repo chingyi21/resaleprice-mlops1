@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Specifies the character encoding for the document -->
+    <meta charset="UTF-8">
+    
+    <!-- Sets the viewport to make the webpage responsive on different devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Title of the webpage that appears in the browser tab -->
+    <title>Resale Price Prediction</title>
+    
+    <!-- Link to the external CSS stylesheet for styling the webpage -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Main container for the content -->
+    <div class="container">
+        <!-- Header of the form -->
+        <h1>Resale Price Prediction</h1>
+
+        <!-- Form for collecting input data from the user -->
+        <form id="prediction-form">
+            <!-- Input for Floor Area in square meters -->
+            <label for="floor_area_sqm">Floor Area (sqm):</label>
+            <input type="text" id="floor_area_sqm" name="floor_area_sqm" required><br>
+
+            <!-- Input for Lease Commence Date -->
+            <label for="lease_commence_date">Lease Commence Date:</label>
+            <input type="text" id="lease_commence_date" name="lease_commence_date" required><br>
+
+            <!-- Input for Distance to Central Business District (CBD) -->
+            <label for="cbd_dist">Distance to CBD:</label>
+            <input type="text" id="cbd_dist" name="cbd_dist" required><br>
+
+            <!-- Input for Distance to the nearest MRT station -->
+            <label for="min_dist_mrt">Distance to MRT:</label>
+            <input type="text" id="min_dist_mrt" name="min_dist_mrt" required><br>
+
+            <!-- Dropdown for selecting the flat type -->
+            <label for="flat_type">Flat Type:</label>
+            <select id="flat_type" name="flat_type" required>
+                <!-- Options for different flat types -->
+                <option value="1 ROOM">1 ROOM</option>
+                <option value="2 ROOM">2 ROOM</option>
+                <option value="3 ROOM">3 ROOM</option>
+                <option value="4 ROOM">4 ROOM</option>
+                <option value="5 ROOM">5 ROOM</option>
+                <option value="EXECUTIVE">EXECUTIVE</option>
+                <option value="MULTI-GENERATION">MULTI-GENERATION</option>
+            </select><br>
+
+            <!-- Dropdown for selecting the storey range -->
+            <label for="storey_range">Storey Range:</label>
+            <select id="storey_range" name="storey_range" required>
+                <!-- Options for different storey ranges -->
+                <option value="01 TO 03">01 TO 03</option>
+                <option value="04 TO 06">04 TO 06</option>
+                <option value="07 TO 09">07 TO 09</option>
+                <option value="10 TO 12">10 TO 12</option>
+                <option value="13 TO 15">13 TO 15</option>
+                <option value="16 TO 18">16 TO 18</option>
+                <option value="19 TO 21">19 TO 21</option>
+                <option value="22 TO 24">22 TO 24</option>
+                <option value="25 TO 27">25 TO 27</option>
+                <option value="28 TO 30">28 TO 30</option>
+                <option value="31 TO 33">31 TO 33</option>
+                <option value="34 TO 36">34 TO 36</option>
+                <option value="37 TO 39">37 TO 39</option>
+                <option value="40 TO 42">40 TO 42</option>
+                <option value="43 TO 45">43 TO 45</option>
+                <option value="46 TO 48">46 TO 48</option>
+                <option value="49 TO 51">49 TO 51</option>
+            </select><br>
+
+            <!-- Submit button to send the form data for prediction -->
+            <button type="submit">Predict</button>
+        </form>
+
+        <!-- Div to display the prediction result -->
+        <div id="prediction-result"></div>
+    </div>
+
+    <!-- JavaScript to handle form submission and display prediction result -->
+    <script>
+        // Adding an event listener to the form to handle the submit event
+        document.getElementById('prediction-form').addEventListener('submit', function(event) {
+            // Prevent the default form submission to allow for AJAX submission
+            event.preventDefault();
+
+            // Use fetch API to send form data to the server via POST request
+            fetch('/predict', {
+                method: 'POST', // Method for sending data
+                body: new FormData(this) // Sending form data as FormData object
+            })
+            .then(response => response.json()) // Parse the JSON response
+            .then(data => {
+                // Display the prediction result in the designated div
+                document.getElementById('prediction-result').innerText = 'Predicted Resale Price: ' + data.prediction;
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+<!-- Explanation of Complex Steps 
+ 
+1. Form Elements (<form>, <label>, <input>, <select>, and <option>):
+These HTML elements are used to create a form where users can input the required information. The name attributes for each input 
+and select element are essential as they correspond to the keys in the form data that will be sent to the server.
+
+2. Event Listener (addEventListener):
+This JavaScript method is used to attach an event handler to the form. The submit event is being listened to, and when the form is 
+submitted, the specified function is executed.
+
+3. Preventing Default Form Submission (event.preventDefault()):
+This prevents the browser from submitting the form in the traditional way, allowing you to submit it asynchronously with JavaScript 
+(AJAX).-->
