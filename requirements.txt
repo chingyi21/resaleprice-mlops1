@@ -165,6 +165,8 @@ transformers==4.33.1
 typer==0.3.2
 types-docutils==0.19.1.1
 types-setuptools==65.6.0.3
+setuptools>=58.0.0
+wheel>=0.36.2
 typing_extensions==4.7.1
 tzdata==2023.3
 urllib3==1.26.13
