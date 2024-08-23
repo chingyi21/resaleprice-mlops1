@@ -88,7 +88,7 @@ opt-einsum==3.3.0
 pip==24.2
 packaging==23.0
 pandas==2.0.3
-pycaret 
+pycaret[full]--3.0.0
 parso==0.8.3
 pathy==0.10.1
 pickleshare==0.7.5
