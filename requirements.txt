@@ -180,6 +180,7 @@ wheel==0.41.0
 zipp==3.11.0
 zstandard==0.17.0
 mysql-connector-python==8.0.32
+ninja==1.10.0
 
 
 
