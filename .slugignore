@@ -1,11 +1,7 @@
-*.log
-*.csv
-*.mp4
-*.zip
-venv/
-__pycache__/
-node_modules/
-data/
-models/
-staticfiles/
 *.pkl
+*.csv
+.git/
+.vscode/
+docs/
+tests/
+venv/
