@@ -179,7 +179,8 @@ WTForms==3.0.1
 wheel==0.41.0
 zipp==3.11.0
 zstandard==0.17.0
-./libs/mysql-connector-python-8.0.32.tar.gz
+mysql-connector-python==8.0.32
+
 
 
 
