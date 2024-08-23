@@ -1,41 +1,10 @@
-import os
-from flask import Flask, render_template, request, jsonify
-import joblib
-import numpy as np
-import pandas as pd
-from google.cloud import storage
-import subprocess
-
+from flask import Flask, render_template, request, jsonify # type: ignore
+import joblib # type: ignore
+import numpy as np # type: ignore
+import pandas as pd # type: ignore
 
 # Initialize the Flask application
 app = Flask(__name__)
-
-
-# Function to download files from Google Cloud Storage
-def download_from_gcs(bucket_name, source_blob_name, destination_file_name):
-    storage_client = storage.Client()
-    bucket = storage_client.bucket(bucket_name)
-    blob = bucket.blob(source_blob_name)
-    blob.download_to_filename(destination_file_name)
-    print(f"Downloaded {source_blob_name} from {bucket_name} to {destination_file_name}")
-
-# Download requirements.txt and .pkl file from Google Cloud Storage
-def setup_environment():
-    bucket_name = "mlop_task3"  
-
-    # Download requirements.txt
-    download_from_gcs(bucket_name, "requirements.txt", "requirements.txt")
-
-    # Download the model .pkl file
-    download_from_gcs(bucket_name, "my_resideintial_pipeline.pkl", "my_residential_pipeline.pkl")
-
-    # Install the dependencies from the downloaded requirements.txt
-    subprocess.run(["pip", "install", "-r", "requirements.txt"])
-
-# Run the setup
-setup_environment()
-
-
 
 # Load the pre-trained model from the specified file
 model = joblib.load('model\my_residential_pipeline.pkl')
@@ -106,9 +75,6 @@ def predict():
     
     # Return the prediction as a JSON response, which will be displayed in the web app
     return jsonify({'prediction': formatted_prediction})
-
-
-
 
 # Run the Flask app in debug mode; this allows for real-time error feedback during development
 if __name__ == '__main__':
