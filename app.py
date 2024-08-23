@@ -6,6 +6,26 @@ import pandas as pd
 # Initialize the Flask application
 app = Flask(__name__)
 
+
+def download_model(bucket_name, source_blob_name, destination_file_name):
+    """Downloads a model from the bucket."""
+    storage_client = storage.Client()
+    bucket = storage_client.bucket(bucket_name)
+    blob = bucket.blob(source_blob_name)
+    blob.download_to_filename(destination_file_name)
+
+    print(f"Downloaded {source_blob_name} from bucket {bucket_name} to {destination_file_name}")
+
+# Load model from Google Cloud Storage
+model_path = 'my_residential_pipeline.pkl'
+bucket_name = 'mlops_task3'
+destination_file_name = '/tmp/my_residential_pipeline.pkl'  # Store it temporarily
+
+if not os.path.exists(destination_file_name):
+    download_model(bucket_name, model_path, destination_file_name)
+
+
+
 # Load the pre-trained model from the specified file
 model = joblib.load('model\my_residential_pipeline.pkl')
 

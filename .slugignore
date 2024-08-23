@@ -8,6 +8,4 @@ node_modules/
 data/
 models/
 staticfiles/
-# Ignore git-related files and directories
-.git/
-.gitignore
+*.pkl
