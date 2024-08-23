@@ -7,7 +7,7 @@ import pandas as pd # type: ignore
 app = Flask(__name__)
 
 # Load the pre-trained model from the specified file
-model = joblib.load('model\my_residential_pipeline.pkl')
+model = joblib.load('model/my_residential_pipeline.pkl')
 
 # Define the home route which renders the HTML form
 @app.route('/')
