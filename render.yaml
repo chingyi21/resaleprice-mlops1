@@ -2,6 +2,7 @@ services:
   - type: web
     name: my-web-app
     env: python
+    runtime: python3.10
     buildCommand: |
       apt-get update && apt-get install -y libffi-dev libjpeg-dev zlib1g-dev
       pip install --upgrade pip setuptools wheel
