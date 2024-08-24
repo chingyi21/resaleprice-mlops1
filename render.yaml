@@ -6,4 +6,4 @@ services:
     pythonVersion: 3.10.12  # Ensure this matches the version you're targeting
     buildCommand: |
       docker build -t chingyi497/my-python-app .
-    startCommand: docker run -p 3000:3000 chingyi497/my-python-app
+    startCommand: docker run -p 2000:2000 chingyi497/my-python-app
