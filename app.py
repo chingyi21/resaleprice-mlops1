@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify # type: ignore
 import joblib # type: ignore
 import numpy as np # type: ignore
 import pandas as pd # type: ignore
+import pycaret
 
 # Initialize the Flask application
 app = Flask(__name__)
