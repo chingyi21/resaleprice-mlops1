@@ -80,7 +80,7 @@ def predict():
 
 # Run the Flask app in debug mode; this allows for real-time error feedback during development
 if __name__ == '__main__':
-    app.run(debug=os.environ.get('FLASK_DEBUG', False))
+    app.run(host='0.0.0.0', port=5000, debug=True)
 
 
 #Explanation of Complex Steps:
