@@ -1,25 +1,21 @@
-FROM python:3.10
+FROM python:3.10 
 
-# Install system dependencies required for building C extensions
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
     build-essential \
-    libev-dev \
     libffi-dev \
     libssl-dev \
+    zlib1g-dev \
+    libjpeg-dev \
+    libpq-dev \
+    libev-dev \
     python3-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Set the working directory
 WORKDIR /app
-
-# Copy requirements.txt
-COPY requirements.txt .
-
-# Install Python dependencies
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy the rest of your application files
 COPY . .
 
-# Specify the command to run your application
+RUN pip install --upgrade pip setuptools wheel
+RUN pip install --no-cache-dir -r requirements.txt
+
 CMD ["python", "app.py"]
